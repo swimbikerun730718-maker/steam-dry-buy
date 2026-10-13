@@ -1,0 +1,33 @@
+name: Sync Steam store
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-steam
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch Steam store (TW)
+        run: python scripts/sync_steam.py
+      - name: Commit if changed
+        run: |
+          git config user.name "steam-sync-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/store.json
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "chore: sync Steam store data"
+          git push

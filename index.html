@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STEEM 乾癮商店</title>
+<meta name="description" content="玩買遊戲的遊戲:用假錢買真實 Steam 商店上的遊戲,過過乾癮。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a class="logo" href="#/"><span>♨</span> STEEM<small>乾癮商店</small></a>
+    <nav class="nav">
+      <a href="#/" data-page="store">商店</a>
+      <a href="#/library" data-page="library">收藏庫</a>
+      <a href="#/work" data-page="work">打工</a>
+      <a href="#/profile" data-page="profile">個人檔案</a>
+    </nav>
+    <div class="top-right">
+      <span id="now" class="now"></span>
+      <a class="lvl-chip" href="#/profile" title="等級">Lv <b id="lvl">0</b></a>
+      <a class="wallet" href="#/work" title="錢包(點我去打工)" id="wallet">NT$ 0</a>
+    </div>
+  </div>
+</header>
+<div class="subbar">
+  <div class="subbar-inner">
+    <a href="#/browse?list=specials">特價</a>
+    <a href="#/browse?list=top_sellers">熱銷</a>
+    <a href="#/browse?list=popular_new">新品</a>
+    <a href="#/browse?list=wishlist">願望清單</a>
+    <form id="search"><input type="search" placeholder="搜尋商店" aria-label="搜尋商店"></form>
+    <a id="cart-link" class="cart-link" href="#/cart">購物車(<span id="cart-count">0</span>)</a>
+  </div>
+</div>
+<main id="main"><div class="loading"><div class="spinner"></div>正在連線到商店……</div></main>
+<footer class="foot">
+  <p id="synced"></p>
+  <p>STEEM 乾癮商店是粉絲向的模擬遊戲,與 Valve Corporation 無關。所有遊戲名稱、圖片與價格屬於其各自的權利人,資料取自 Steam 公開商店頁面,僅供娛樂。這裡的錢都是假的,買到的遊戲也是假的,但空虛是真的。</p>
+</footer>
+<div id="toasts"></div>
+<div id="modal" hidden></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
